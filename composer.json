@@ -1,0 +1,11 @@
+{
+    "name": "quentin/quete_simple_mvc",
+    "description": "quete MVC 2",
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
