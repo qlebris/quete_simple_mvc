@@ -1,16 +1,16 @@
 <?php
 namespace Model;
-// src/Model/ItemManager.php
+// src/Model/CategoryManager.php
 require __DIR__ . '/../../app/db.php';
 
-// récupération de tous les items
+// récupération de toutes les catégories
 
-class ItemManager
+class CategoryManager
 {
     public function selectAllItems() :array
     {
         $pdo = new \PDO(DSN, USER, PASS);
-        $query = "SELECT * FROM item";
+        $query = "SELECT * FROM category";
         $res = $pdo->query($query);
         return $res->fetchAll();
     }
@@ -18,14 +18,10 @@ class ItemManager
     public function selectOneItem(int $id) : array
     {
         $pdo = new \PDO(DSN, USER, PASS);
-        $query = "SELECT * FROM item WHERE id = :id";
+        $query = "SELECT * FROM category WHERE id = :id";
         $statement = $pdo->prepare($query);
-        $statement->bindValue(':id', $id, \PDO::PARAM_INT);  
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        // contrairement à fetchAll(), fetch() ne renvoie qu'un seul résultat
         return $statement->fetch();
     }
 }
-
-
-?>
