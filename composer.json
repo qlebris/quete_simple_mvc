@@ -2,7 +2,8 @@
     "name": "quentin/quete_simple_mvc",
     "description": "quete MVC 2",
     "require": {
-        "nikic/fast-route": "^1.3"
+        "nikic/fast-route": "^1.3",
+        "twig/twig": "^2.5"
     },
 
     "autoload": {

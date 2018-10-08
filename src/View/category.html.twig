@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+<title>Categories Quete MVC</title>
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Les categories</h1>
+    <ul>
+        {% for category in categories %}
+        <li>{{ category.category }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+{% endblock %}
