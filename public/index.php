@@ -4,3 +4,5 @@
 
 $route = $_GET['route'] ?? '';
 
+
+var_dump($_POST);

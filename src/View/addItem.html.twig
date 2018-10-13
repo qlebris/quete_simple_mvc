@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Add Item Quete MVC
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <div class="row">
+            <form class="form-inline col-6" method="post">
+                <div class="form-group mb-2">
+                    <label for="newItem" class="sr-only">New item</label>
+                    <input type="text" class="form-control-plaintext" id="newItem" name="title">
+                    <button type="submit" class="btn btn-primary mb-2">Add</button>
+                </div>
+            </form>
+        </div>
+        <a href='/'>Back to list</a>
+    </section>
+{% endblock %}

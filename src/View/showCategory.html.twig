@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    <title>Description category</title>
+    Description category
 {% endblock %}
 
 {% block content %}
@@ -10,6 +10,9 @@
         <ul>
             <li>Id : {{ category.id }}</li>
         </ul>
+        <a href="/category/edit/{{ category.id }}">Edit</a>
+        <a href="/category/delete/{{category.id}}">Supprimer</a>
         <a href='/categories'>Back to list</a>
+
     </main>
 {% endblock %}

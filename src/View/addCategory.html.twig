@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Add Category Quete MVC
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <div class="row">
+            <form method="post" class="form-inline col-6">
+                <div class="form-group mb-2">
+                    <label for="newCategory" class="sr-only">New category</label>
+                    <input type="text" class="form-control-plaintext" name="category" id="newCategory">
+                    <button type="submit" class="btn btn-primary mb-2">Add</button>
+                </div>
+            </form>
+        </div>
+        <a href='/categories'>Back to list</a>
+    </section>
+
+{% endblock %}

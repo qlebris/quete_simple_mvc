@@ -1,27 +1,42 @@
 <?php
 namespace Model;
 // src/Model/CategoryManager.php
-require __DIR__ . '/../../app/db.php';
 
 // récupération de toutes les catégories
 
-class CategoryManager
+class CategoryManager extends AbstractManager
 {
-    public function selectAllItems() :array
+    const TABLE = 'category';
+
+    public function __construct($pdo)
     {
-        $pdo = new \PDO(DSN, USER, PASS);
-        $query = "SELECT * FROM category";
-        $res = $pdo->query($query);
-        return $res->fetchAll();
+        parent::__construct(self::TABLE, $pdo);
     }
 
-    public function selectOneItem(int $id) : array
+    public function insert(Category $category): int
     {
-        $pdo = new \PDO(DSN, USER, PASS);
-        $query = "SELECT * FROM category WHERE id = :id";
-        $statement = $pdo->prepare($query);
-        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`category`) VALUES (:category)");
+        $statement->bindValue('category', $category->getCategory(), \PDO::PARAM_STR);
+        if ($statement->execute()) {
+            return $this->pdo->lastInsertId();
+        }
+    }
+    public function update(Category $category):int
+    {
+
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE $this->table SET `category` = :category WHERE id=:id");
+        $statement->bindValue('id', $category->getId(), \PDO::PARAM_INT);
+        $statement->bindValue('category', $category->getCategory(), \PDO::PARAM_STR);
+
+
+        return $statement->execute();
+    }
+    public function delete(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM $this->table WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetch();
     }
 }

@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-<title>Categories Quete MVC</title>
+Categories Quete MVC
 {% endblock %}
 
 {% block content %}
@@ -9,9 +9,10 @@
     <h1>Les categories</h1>
     <ul>
         {% for category in categories %}
-        <li>{{ category.category }}</li>
+        <li><a href="/category/{{ category.id }}">{{ category.id }} . {{ category.category }}</li>
         {% endfor %}
     </ul>
+    <a href='/category/add'>add new category</a>
 </section>
 
 {% endblock %}
